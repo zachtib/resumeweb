@@ -1,5 +1,17 @@
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 from django.db import models
+
+class ContactInformation(models.Model):
+    site = models.OneToOneField(Site)
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200, null=True, blank=True)
+    phone = models.CharField(max_length=200, null=True, blank=True)
+    objective = models.TextField()
+
+    def __unicode__(self):
+        return self.name
+
 
 class DateRange(models.Model):
     start = models.DateField('Start Date')
