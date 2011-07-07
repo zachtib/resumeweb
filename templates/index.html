@@ -30,6 +30,13 @@
 
     <div id="contact-info" class="vcard">
         <h1 class = "fn">{{ basic.name }}</h1>
+        {% if basic.email %}
+            <p>Email: <a href="mailto:{{ basic.email }}">{{ basic.email }}</a></p>
+        {% endif %}
+        {% if basic.phone %}
+            <p>Phone: {{ basic.phone }}</p>
+        {% endif %}
+        <p>
     </div>
 
     <div id="objective">
