@@ -16,22 +16,37 @@ class Degree(models.Model):
     degree = models.CharField(max_length=200)
     graddate = models.DateField('Graduation Date')
 
+    def __unicode__(self):
+        return self.degree
+
 class Job(models.Model):
     company = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     position = models.CharField(max_length=200)
     description = models.TextField()
 
+    def __unicode__(self):
+        return self.company
+
 class Project(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
+
+    def __unicode__(self):
+        return self.name
 
 class Skill(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
 
+    def __unicode__(self):
+        return self.title
+
 class Extracurricular(models.Model):
     description = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.description
 
 class DateRange(models.Model):
     job = models.ForeignKey(Job, null=True)
