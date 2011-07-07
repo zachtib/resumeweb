@@ -5,16 +5,10 @@ from django.template import RequestContext
 from resume.models import Degree, Job, Project, Skill, Extracurricular
 
 def index(request, noheader=False):
-    d = Degree.objects.all()
-    j = Job.objects.all()
-    p = Project.objects.all()
-    s = Skill.objects.all()
-    e = Extracurricular.objects.all()
+    degrees = Degree.objects.all()
+    jobs = Job.objects.all()
+    projects = Project.objects.all()
+    skills = Skill.objects.all()
+    extras = Extracurricular.objects.all()
 
-    return render_to_response('index.html',
-                                {   'degrees': d,
-                                    'jobs': j,
-                                    'projects': p,
-                                    'skills': s,
-                                    'extras': e,
-                                })
+    return render_to_response('index.html', locals())
