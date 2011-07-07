@@ -2,6 +2,6 @@ Résuméweb
 
 This is a small tool I'm writing with Django to manage a web-based Résumé. Currently, it's an excerpt of a larger project I was working on, but I'm generalizing it a bit and trying to make it more robust.
 
-To install, download the source and unpack to whereever you want it to reside. Then configure the app to run through Apache (I'd suggest using wsgi, though I will provide files to do this soon). Check online if you need help deploying a Django app.
+To install, download the source and unpack to whereever you want it to reside. Then configure the app to run through Apache (I'd suggest using wsgi, and I provide files to do this). Check online if you need help deploying a Django app.
 
 Then, log into the admin ui and edit your Résumé. The only publicly accesible page will be the resume itself.
