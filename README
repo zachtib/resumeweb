@@ -5,3 +5,5 @@ This is a small tool I'm writing with Django to manage a web-based Résumé. Cur
 To install, download the source and unpack to whereever you want it to reside. Then configure the app to run through Apache (I'd suggest using wsgi, and I provide files to do this). Check online if you need help deploying a Django app.
 
 Then, log into the admin ui and edit your Résumé. The only publicly accesible page will be the resume itself.
+
+The formatting for the Résumé was adapted from: http://css-tricks.com/5191-one-page-resume-site/
