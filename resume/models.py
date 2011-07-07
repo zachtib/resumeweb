@@ -39,3 +39,9 @@ class DateRange(models.Model):
     extra = models.ForeignKey(Extracurricular, null=True)
     start = models.DateField('Start Date')
     end = models.DateField('End Date', null=True, blank=True)
+
+    def __unicode__(self):
+        if self.end is None:
+            return '%s to Present' % (self.start)
+        else:
+            return '%s to %s' % (self.start, self.end)
