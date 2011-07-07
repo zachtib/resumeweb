@@ -1,7 +1,7 @@
 import os
 import sys
 
-for path in ('/usr/local/django-apps/', '/usr/local/django-apps/resumeweb')
+for path in ('/usr/local/django-apps/', '/usr/local/django-apps/resumeweb'):
     if path not in sys.path:
             sys.path.append(path)
 
