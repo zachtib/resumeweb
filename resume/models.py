@@ -57,6 +57,6 @@ class DateRange(models.Model):
 
     def __unicode__(self):
         if self.end is None:
-            return '%s to Present' % (self.start)
+            return '%s to Present' % (self.start.strftime("%B %e, %Y"))
         else:
-            return '%s to %s' % (self.start, self.end)
+            return '%s to %s' % (self.start.strftime("%B %e, %Y"), self.end.strftime("%B %e, %Y"))
