@@ -1,0 +1,4 @@
+*.sql
+*.pyc
+*.swp
+settings.py
