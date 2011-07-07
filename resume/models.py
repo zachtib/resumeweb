@@ -1,6 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+class DateRange(models.Model):
+    start = models.DateField('Start Date')
+    end = models.DateField('End Date')
+
 class Resume(models.Model):
     user = models.ForeignKey(User)
     name = models.CharField('Full Name', max_length=200)
