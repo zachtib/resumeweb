@@ -68,7 +68,9 @@
                 <h2>{{ job.company }}</h2>
                 <p><strong>Location:</strong> {{ job.location }}</p>
                 <p><strong>Position:</strong> {{ job.position }}</p>
-                <p><strong>Dates:</strong> {{ job.dates|join:", " }}</p>
+                {% if job.dates %}
+                    <p><strong>Dates:</strong> {{ job.dates|join:", " }}</p>
+                {% endif %}
                 <p> {{ job.description|markdown }} </p>
             </dd>
             <dd class="clear"></dd>
@@ -82,7 +84,9 @@
             {% for project in projects %}
             <dd>
                 <h2>{{ project.name }}</h2>
-                <p><strong>Dates:</strong> {{ project.dates|join:", " }}</p>
+                {% if project.dates %}
+                    <p><strong>Dates:</strong> {{ project.dates|join:", " }}</p>
+                {% endif %}
                 <p>{{ project.description|markdown }}</p>
             </dd>
             {% endfor %}
@@ -107,7 +111,9 @@
             {% for extra in extras %}
             <dd>
                 <h2>{{ extra.description }}</h2>
-                <p><strong>Dates:</strong> {{ extra.dates|join:", " }}</p>
+                {% if extra.dates %}
+                    <p><strong>Dates:</strong> {{ extra.dates|join:", " }}</p>
+                {% endif %}
             </dd>
             {% endfor %}
         {% endif %}
