@@ -1,6 +1,4 @@
-from django.shortcuts import render_to_response, get_object_or_404
-from django.contrib.admin.models import User
-from django.template import RequestContext
+from django.shortcuts import render_to_response
 
 from resume.models import Degree, Job, Project, Skill, Extracurricular
 
@@ -12,3 +10,5 @@ def index(request):
     extras = Extracurricular.objects.all()
 
     return render_to_response('index.html', locals())
+
+
