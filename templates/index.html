@@ -43,25 +43,21 @@
         <p>{{ basic.objective }}</p>
     </div>
 
-    <div class="clear"></div>
-
     <dl>
-
-        <dd class="clear"></dd>
-
         {% if degrees %}
+        <dd class="clear"></dd>
         <dt>Education</dt>
             {% for degree in degrees %}
             <dd>
-                <h2>{{ degree.school }}</h2>
-                <p>{{ degree.degree }} {{ degree.graddate }}</p>
+                <h2>{{ degree.degree }}</h2>
+                <p>{{ degree.school }}</p>
+                </p>{{ degree.graddate }}</p>
             </dd>
             {% endfor %}
         {% endif %}
 
-        <dd class="clear"></dd>
-
         {% if jobs %}
+        <dd class="clear"></dd>
         <dt>Employment History</dt>
             {% for job in jobs %}
             <dd>
@@ -76,10 +72,9 @@
             <dd class="clear"></dd>
             {% endfor %}
         {% endif %}
-
-        <dd class="clear"></dd>
         
         {% if projects %}
+        <dd class="clear"></dd>
         <dt>Independent Projects</dt>
             {% for project in projects %}
             <dd>
@@ -92,10 +87,9 @@
             <dd class="clear"></dd>
             {% endfor %}
         {% endif %}
-
-        <dd class="clear"></dd>
         
         {% if skills %}
+        <dd class="clear"></dd>
         <dt>Skills</dt>
         <dd>
         {% for skill in skills %}
@@ -104,10 +98,9 @@
         {% endfor %}
         </dd>
         {% endif %}
-
-        <dd class="clear"></dd>
         
         {% if extras %}
+        <dd class="clear"></dd>
         <dt>Extracurricular Activities</dt>
             {% for extra in extras %}
             <dd>
