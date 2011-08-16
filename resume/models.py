@@ -12,7 +12,7 @@ class BasicInformation(models.Model):
         return self.name
 
 class Degree(models.Model):
-    order = models.IntegerField(primary_key=True)
+    order = models.IntegerField(unique=True)
     school = models.CharField(max_length=200)
     degree = models.CharField(max_length=200)
     graddate = models.DateField('Graduation Date')
@@ -21,7 +21,7 @@ class Degree(models.Model):
         return self.degree
 
 class Job(models.Model):
-    order = models.IntegerField(primary_key=True)
+    order = models.IntegerField(unique=True)
     company = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     position = models.CharField(max_length=200)
@@ -31,7 +31,7 @@ class Job(models.Model):
         return self.company
 
 class Project(models.Model):
-    order = models.IntegerField(primary_key=True)
+    order = models.IntegerField(unique=True)
     name = models.CharField(max_length=200)
     description = models.TextField()
 
@@ -39,7 +39,7 @@ class Project(models.Model):
         return self.name
 
 class Skill(models.Model):
-    order = models.IntegerField(primary_key=True)
+    order = models.IntegerField(unique=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
 
@@ -47,7 +47,7 @@ class Skill(models.Model):
         return self.title
 
 class Extracurricular(models.Model):
-    order = models.IntegerField(primary_key=True)
+    order = models.IntegerField(unique=True)
     description = models.CharField(max_length=200)
 
     def __unicode__(self):
