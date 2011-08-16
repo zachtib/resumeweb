@@ -8,11 +8,11 @@ def index(request):
         raise Exception(
             'Error: You must have exactly ONE BasicInformation object')
     basic = basic[0]
-    degrees = Degree.objects.all()
-    jobs = Job.objects.all()
-    projects = Project.objects.all()
-    skills = Skill.objects.all()
-    extras = Extracurricular.objects.all()
+    degrees = Degree.objects.all().order_by('order')
+    jobs = Job.objects.all().order_by('order')
+    projects = Project.objects.all().order_by('order')
+    skills = Skill.objects.all().order_by('order')
+    extras = Extracurricular.objects.all().order_by('order')
 
     for job in jobs:
         job.dates = DateRange.objects.filter(job=job)
