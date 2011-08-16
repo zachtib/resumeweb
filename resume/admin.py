@@ -16,7 +16,7 @@ class BasicInformationAdmin(admin.ModelAdmin):
 class DegreeAdmin(admin.ModelAdmin):
     list_display = ('degree', 'school',)
     fieldsets = [
-        (None,      {'fields': ['school', 'degree', 'graddate',]}),
+        (None,      {'fields': ['degree', 'school', 'graddate',]}),
         ('Config',  {'fields': ['order',]}),
     ]
 
