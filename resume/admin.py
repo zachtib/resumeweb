@@ -4,18 +4,59 @@ from django.contrib import admin
 
 class DateRangeInline(admin.TabularInline):
     model = DateRange
-    fields = ['start', 'end']
+    fields = ['start', 'end',]
     extra = 1
 
-class DateInlineAdmin(admin.ModelAdmin):
-    inlines = [DateRangeInline, ]
+class BasicInformationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'email',)
+    fieldsets = [
+        (None,      {'fields': ['name', 'phone', 'email', 'objective',]})
+    ]
 
-admin.site.register(BasicInformation)
-admin.site.register(Degree)
-admin.site.register(Job, DateInlineAdmin)
-admin.site.register(Project, DateInlineAdmin)
-admin.site.register(Skill)
-admin.site.register(Extracurricular, DateInlineAdmin)
+class DegreeAdmin(admin.ModelAdmin):
+    list_display = ('degree', 'school',)
+    fieldsets = [
+        (None,      {'fields': ['school', 'degree', 'graddate',]}),
+        ('Config',  {'fields': ['order',]}),
+    ]
+
+class JobAdmin(admin.ModelAdmin):
+    list_display = ('company', 'position',)
+    fieldsets = [
+        (None,      {'fields': ['company', 'position', 'location', 'description',]}),
+        ('Config',  {'fields': ['order',]}),
+    ]
+    inlines = [DateRangeInline]
+
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    fieldsets = [
+        (None,      {'fields': ['name', 'description',]}),
+        ('Config',  {'fields': ['order',]}),
+    ]
+    inlines = [DateRangeInline]
+
+class SkillAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    fieldsets = [
+        (None,      {'fields': ['title', 'description',]}),
+        ('Config',  {'fields': ['order',]}),
+    ]
+
+class ExtracurricularAdmin(admin.ModelAdmin):
+    list_display = ('description',)
+    fieldsets = [
+        (None,      {'fields': ['description',]}),
+        ('Config',  {'fields': ['order',]}),
+    ]
+    inlines = [DateRangeInline]
+
+admin.site.register(BasicInformation, BasicInformationAdmin)
+admin.site.register(Degree, DegreeAdmin)
+admin.site.register(Job, JobAdmin)
+admin.site.register(Project, ProjectAdmin)
+admin.site.register(Skill, SkillAdmin)
+admin.site.register(Extracurricular, ExtracurricularAdmin)
 
 
 
