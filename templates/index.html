@@ -50,8 +50,7 @@
             {% for degree in degrees %}
                 <dd>
                     <h2>{{ degree.degree }}</h2>
-                    <p>{{ degree.school }}</p>
-                    </p>{{ degree.graddate }}</p>
+                    <p>{{ degree.school }} - {{ degree.graddate }}</p>
                 </dd>
             {% endfor %}
             <dd class="clear"></dd>
@@ -92,13 +91,13 @@
         {% if skills %}
             <dd class="clear"></dd>
             <dt>Skills</dt>
-            <dd>
             {% for skill in skills %}
-                <h2>{{ skill.title }}</h2>
-                <p>{{ skill.description|markdown }}</p>
+                <dd>
+                    <h2>{{ skill.title }}</h2>
+                    <p>{{ skill.description|markdown }}</p>
+                </dd>
+                <dd class="clear"></dd>
             {% endfor %}
-            </dd>
-            <dd class="clear"></dd>
         {% endif %}
 
         {% if extras %}
