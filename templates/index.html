@@ -3,9 +3,9 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Résumé for {{ basic.name }}</title>
-    <style type="text/css"> 
+    <style type="text/css">
         * { margin: 0; padding: 0; }
         body { font: 16px Helvetica, Sans-Serif; line-height: 24px; }
         .clear { clear: both; }
@@ -23,7 +23,7 @@
         dt { font-style: italic; font-weight: bold; font-size: 18px; text-align: right; padding: 0 26px 0 0; width: 150px; float: left; height: 100px; border-right: 1px solid #999;  }
         dd { width: 600px; float: right; }
         dd.clear { float: none; margin: 0; height: 30px; }
-     </style> 
+     </style>
 </head>
 <body>
     <div id="page-wrap">
@@ -45,71 +45,74 @@
 
     <dl>
         {% if degrees %}
-        <dd class="clear"></dd>
-        <dt>Education</dt>
+            <dd class="clear"></dd>
+            <dt>Education</dt>
             {% for degree in degrees %}
-            <dd>
-                <h2>{{ degree.degree }}</h2>
-                <p>{{ degree.school }}</p>
-                </p>{{ degree.graddate }}</p>
-            </dd>
+                <dd>
+                    <h2>{{ degree.degree }}</h2>
+                    <p>{{ degree.school }}</p>
+                    </p>{{ degree.graddate }}</p>
+                </dd>
             {% endfor %}
+            <dd class="clear"></dd>
         {% endif %}
 
         {% if jobs %}
-        <dd class="clear"></dd>
-        <dt>Employment History</dt>
+            <dd class="clear"></dd>
+            <dt>Employment History</dt>
             {% for job in jobs %}
-            <dd>
-                <h2>{{ job.company }}</h2>
-                <p><strong>Location:</strong> {{ job.location }}</p>
-                <p><strong>Position:</strong> {{ job.position }}</p>
-                {% if job.dates %}
-                    <p><strong>Dates:</strong> {{ job.dates|join:", " }}</p>
-                {% endif %}
-                <p> {{ job.description|markdown }} </p>
-            </dd>
-            <dd class="clear"></dd>
+                <dd>
+                    <h2>{{ job.company }}</h2>
+                    <p><strong>Location:</strong> {{ job.location }}</p>
+                    <p><strong>Position:</strong> {{ job.position }}</p>
+                    {% if job.dates %}
+                        <p><strong>Dates:</strong> {{ job.dates|join:", " }}</p>
+                    {% endif %}
+                    <p> {{ job.description|markdown }} </p>
+                </dd>
+                <dd class="clear"></dd>
             {% endfor %}
         {% endif %}
-        
+
         {% if projects %}
-        <dd class="clear"></dd>
-        <dt>Independent Projects</dt>
+            <dd class="clear"></dd>
+            <dt>Independent Projects</dt>
             {% for project in projects %}
+                <dd>
+                    <h2>{{ project.name }}</h2>
+                    {% if project.dates %}
+                        <p><strong>Dates:</strong> {{ project.dates|join:", " }}</p>
+                    {% endif %}
+                    <p>{{ project.description|markdown }}</p>
+                </dd>
+                <dd class="clear"></dd>
+            {% endfor %}
+        {% endif %}
+
+        {% if skills %}
+            <dd class="clear"></dd>
+            <dt>Skills</dt>
             <dd>
-                <h2>{{ project.name }}</h2>
-                {% if project.dates %}
-                    <p><strong>Dates:</strong> {{ project.dates|join:", " }}</p>
-                {% endif %}
-                <p>{{ project.description|markdown }}</p>
+            {% for skill in skills %}
+                <h2>{{ skill.title }}</h2>
+                <p>{{ skill.description|markdown }}</p>
+            {% endfor %}
             </dd>
             <dd class="clear"></dd>
-            {% endfor %}
         {% endif %}
-        
-        {% if skills %}
-        <dd class="clear"></dd>
-        <dt>Skills</dt>
-        <dd>
-        {% for skill in skills %}
-            <h2>{{ skill.title }}</h2>
-            <p>{{ skill.description|markdown }}</p>
-        {% endfor %}
-        </dd>
-        {% endif %}
-        
+
         {% if extras %}
-        <dd class="clear"></dd>
-        <dt>Extracurricular Activities</dt>
+            <dd class="clear"></dd>
+            <dt>Extracurricular Activities</dt>
             {% for extra in extras %}
-            <dd>
-                <h2>{{ extra.description }}</h2>
-                {% if extra.dates %}
-                    <p><strong>Dates:</strong> {{ extra.dates|join:", " }}</p>
-                {% endif %}
-            </dd>
+                <dd>
+                    <h2>{{ extra.description }}</h2>
+                    {% if extra.dates %}
+                        <p><strong>Dates:</strong> {{ extra.dates|join:", " }}</p>
+                    {% endif %}
+                </dd>
             {% endfor %}
+            <dd class="clear"></dd>
         {% endif %}
     </dl>
     </div>
