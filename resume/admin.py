@@ -31,7 +31,7 @@ class JobAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name',)
     fieldsets = [
-        (None,      {'fields': ['name', 'description',]}),
+        (None,      {'fields': ['name', 'description', 'link',]}),
         ('Config',  {'fields': ['order',]}),
     ]
     inlines = [DateRangeInline]

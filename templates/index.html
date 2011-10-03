@@ -83,6 +83,9 @@
                         <p><strong>Dates:</strong> {{ project.dates|join:", " }}</p>
                     {% endif %}
                     <p>{{ project.description|markdown }}</p>
+                    {% if project.link %}
+						<p><a href="{{ project.link}}">Project Site</a></p>
+                    {% endif %}
                 </dd>
                 <dd class="clear"></dd>
             {% endfor %}
