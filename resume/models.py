@@ -34,7 +34,7 @@ class Project(models.Model):
     order = models.IntegerField(unique=True)
     name = models.CharField(max_length=200)
     description = models.TextField()
-    link = models.CharField(max_length=1000, null=True)
+    link = models.CharField(max_length=1000, null=True, blank=True)
 
     def __unicode__(self):
         return self.name

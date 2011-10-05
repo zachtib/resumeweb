@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Résumé for {{ basic.name }}</title>
     <style type="text/css">
-        * { margin: 0; padding: 0; }
+        * { margin: 0; padding: 0; line-height: 167%; }
         body { font: 16px Helvetica, Sans-Serif; line-height: 24px; }
         .clear { clear: both; }
         #page-wrap { width: 800px; margin: 40px auto 60px; }
@@ -50,7 +50,8 @@
             {% for degree in degrees %}
                 <dd>
                     <h2>{{ degree.degree }}</h2>
-                    <p>{{ degree.school }} - {{ degree.graddate }}</p>
+                    <p><strong>From:</strong> {{ degree.school }}</p>
+                    <p><strong>Graduation Date:</strong> {{ degree.graddate }}</p>
                 </dd>
             {% endfor %}
             <dd class="clear"></dd>
