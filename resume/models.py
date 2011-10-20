@@ -1,4 +1,5 @@
 from django.db import models
+import socket
 
 class BasicInformation(models.Model):
     name = models.CharField(max_length=200)
@@ -69,6 +70,17 @@ class Visitor(models.Model):
     ipaddress = models.IPAddressField(primary_key=True, editable=False)
     visits = models.IntegerField(default=1, editable=False)
     lastvisit = models.DateField(auto_now=True, editable=False)
+    
+    def hostData(self):
+        hoststr = 'No Host Found'
+        try:
+            (hostname, aliaslist, ipaddrlist) = socket.gethostbyaddr(self.ipaddress)
+            hoststr = str(hostname)
+            for alias in aliaslist:
+                hoststr += ', ' + str(alias)
+        except:
+            pass
+        return hoststr
     
     def __unicode__(self):
         return self.ipaddress
