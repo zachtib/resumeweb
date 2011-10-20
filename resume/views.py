@@ -4,14 +4,16 @@ from resume.models import *
 
 def index(request):
     try:
-        ip = request.get_host()
+        ip = request.META['REMOTE_ADDR']
         visitor = Visitor.objects.all().filter(ipaddress=ip)
         if len(visitor) != 1:
             visitor = Visitor()
             visitor.ipaddress = ip
+            visitor.hostname = request.META['REMOTE_HOST']
             visitor.save()
         else:
             visitor = visitor[0]
+            visitor.hostname = request.META['REMOTE_HOST']
             visitor.visits += 1
             visitor.save()
     except:

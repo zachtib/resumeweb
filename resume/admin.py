@@ -52,7 +52,7 @@ class ExtracurricularAdmin(admin.ModelAdmin):
     inlines = [DateRangeInline]
 
 class VisitorAdmin(admin.ModelAdmin):
-    list_display = ('ipaddress', 'visits', 'lastvisit',)
+    list_display = ('ipaddress', 'hostname', 'visits', 'lastvisit',)
 
 admin.site.register(BasicInformation, BasicInformationAdmin)
 admin.site.register(Degree, DegreeAdmin)
