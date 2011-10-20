@@ -67,7 +67,6 @@ class DateRange(models.Model):
 
 class Visitor(models.Model):
     ipaddress = models.IPAddressField(primary_key=True, editable=False)
-    hostname = models.CharField(max_length=200, editable=False, null=True, blank=True)
     visits = models.IntegerField(default=1, editable=False)
     lastvisit = models.DateField(auto_now=True, editable=False)
     

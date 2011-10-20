@@ -9,11 +9,9 @@ def index(request):
         if len(visitor) != 1:
             visitor = Visitor()
             visitor.ipaddress = ip
-            visitor.hostname = request.META['REMOTE_HOST']
             visitor.save()
         else:
             visitor = visitor[0]
-            visitor.hostname = request.META['REMOTE_HOST']
             visitor.visits += 1
             visitor.save()
     except:
