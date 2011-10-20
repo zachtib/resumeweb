@@ -1,4 +1,5 @@
 *.sql
 *.pyc
 *.swp
+*.db
 settings.py
