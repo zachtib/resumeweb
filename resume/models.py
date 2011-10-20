@@ -34,7 +34,7 @@ class Project(models.Model):
     order = models.IntegerField(unique=True)
     name = models.CharField(max_length=200)
     description = models.TextField()
-    link = models.CharField(max_length=1000, null=True)
+    link = models.CharField(max_length=1000, null=True, blank=True)
 
     def __unicode__(self):
         return self.name
@@ -66,3 +66,11 @@ class DateRange(models.Model):
             return '%s to Present' % (self.start.strftime("%B %e, %Y"))
         else:
             return '%s to %s' % (self.start.strftime("%B %e, %Y"), self.end.strftime("%B %e, %Y"))
+
+class Visitor(models.Model):
+    ipaddress = models.IPAddressField(primary_key=True, editable=False)
+    visits = models.IntegerField(default=1, editable=False)
+    lastvisit = models.DateField(auto_now=True, editable=False)
+    
+    def __unicode__(self):
+        return self.ipaddress

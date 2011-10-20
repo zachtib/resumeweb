@@ -3,6 +3,20 @@ from django.shortcuts import render_to_response
 from resume.models import *
 
 def index(request):
+    try:
+        ip = request.get_host()
+        visitor = Visitor.objects.all().filter(ipaddress=ip)
+        if len(visitor) != 1:
+            visitor = Visitor()
+            visitor.ipaddress = ip
+            visitor.save()
+        else:
+            visitor = visitor[0]
+            visitor.visits += 1
+            visitor.save()
+    except:
+        pass
+    
     basic = BasicInformation.objects.all()
     if len(basic) != 1:
         raise Exception(
