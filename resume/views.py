@@ -1,6 +1,19 @@
 from django.shortcuts import render_to_response
-
+from django.http import HttpResponse
+from django.template import RequestContext
+from django.template.loader import get_template
 from resume.models import *
+
+import StringIO
+import ho.pisa as pisa
+import logging
+
+class PisaNullHandler(logging.Handler):
+    def emit(self, record):
+        pass
+
+logging.getLogger("ho.pisa").addHandler(PisaNullHandler())
+
 
 def index(request):
     basic = BasicInformation.objects.all()
@@ -20,6 +33,21 @@ def index(request):
         project.dates = DateRange.objects.filter(project=project)
     for extra in extras:
         extra.dates = DateRange.objects.filter(extra=extra)
+    
+    pdf = False
+    if request.method == "GET" and "pdf" in request.GET:
+        pdf = True
+    
+    context = RequestContext(request, locals())
+    template = get_template("index.html")
+    html = template.render(context)
+    result = StringIO.StringIO()
+    if pdf:
+        pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")), result)
+        response = HttpResponse(mimetype="application/pdf")
+        response['Content-Disposition'] = 'attachment; Resume.pdf'
+        response.write(result.getvalue())
+        return response
 
     return render_to_response('index.html', locals())
 
