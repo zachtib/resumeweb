@@ -53,6 +53,8 @@ class ExtracurricularAdmin(admin.ModelAdmin):
 
 class VisitorAdmin(admin.ModelAdmin):
     list_display = ('hostData', 'ipaddress', 'visits', 'lastvisit',)
+    date_hierarchy = 'lastvisit'
+    list_per_page = 25
 
 admin.site.register(BasicInformation, BasicInformationAdmin)
 admin.site.register(Degree, DegreeAdmin)

@@ -71,6 +71,9 @@ class Visitor(models.Model):
     visits = models.IntegerField(default=1, editable=False)
     lastvisit = models.DateField(auto_now=True, editable=False)
     
+    class Meta:
+		ordering = ['-lastvisit']
+    
     def hostData(self):
         hoststr = 'No Host Found'
         try:
