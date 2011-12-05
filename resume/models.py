@@ -1,6 +1,5 @@
-from django.contrib.auth.models import User
-from django.contrib.sites.models import Site
 from django.db import models
+import socket
 
 class BasicInformation(models.Model):
     name = models.CharField(max_length=200)
@@ -12,6 +11,7 @@ class BasicInformation(models.Model):
         return self.name
 
 class Degree(models.Model):
+    order = models.IntegerField(unique=True)
     school = models.CharField(max_length=200)
     degree = models.CharField(max_length=200)
     graddate = models.DateField('Graduation Date')
@@ -20,6 +20,7 @@ class Degree(models.Model):
         return self.degree
 
 class Job(models.Model):
+    order = models.IntegerField(unique=True)
     company = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     position = models.CharField(max_length=200)
@@ -29,13 +30,16 @@ class Job(models.Model):
         return self.company
 
 class Project(models.Model):
+    order = models.IntegerField(unique=True)
     name = models.CharField(max_length=200)
     description = models.TextField()
+    link = models.CharField(max_length=1000, null=True, blank=True)
 
     def __unicode__(self):
         return self.name
 
 class Skill(models.Model):
+    order = models.IntegerField(unique=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
 
@@ -43,6 +47,7 @@ class Skill(models.Model):
         return self.title
 
 class Extracurricular(models.Model):
+    order = models.IntegerField(unique=True)
     description = models.CharField(max_length=200)
 
     def __unicode__(self):
@@ -60,3 +65,25 @@ class DateRange(models.Model):
             return '%s to Present' % (self.start.strftime("%B %e, %Y"))
         else:
             return '%s to %s' % (self.start.strftime("%B %e, %Y"), self.end.strftime("%B %e, %Y"))
+
+class Visitor(models.Model):
+    ipaddress = models.IPAddressField(primary_key=True, editable=False)
+    visits = models.IntegerField(default=1, editable=False)
+    lastvisit = models.DateField(auto_now=True, editable=False)
+    
+    class Meta:
+		ordering = ['-lastvisit']
+    
+    def hostData(self):
+        hoststr = 'No Host Found'
+        try:
+            (hostname, aliaslist, ipaddrlist) = socket.gethostbyaddr(self.ipaddress)
+            hoststr = str(hostname)
+            for alias in aliaslist:
+                hoststr += ', ' + str(alias)
+        except:
+            pass
+        return hoststr
+    
+    def __unicode__(self):
+        return self.ipaddress
